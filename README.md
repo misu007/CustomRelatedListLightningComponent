@@ -1,5 +1,7 @@
 # Custom Related List Lightning Component
 
+自由にカスタマイズできる、標準関連リスト風カスタムLightning Componentのサンプルコードです。
+
 ## 機能
  - 配置されたレコードの項目値を元に、別オブジェクトを検索して一覧表示できる  
  - 表示できる別オブジェクトは参照関係なくてもOK、自オブジェクトでもOK  
