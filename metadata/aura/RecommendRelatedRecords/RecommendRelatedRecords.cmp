@@ -1,0 +1,81 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:hasSObjectName"
+                controller="RecommendRelatedRecordsController" access="global" >
+    
+    <!-- This record and Object -->
+    <aura:attribute access="global" name="recordId" type="Id" />
+    <aura:attribute access="global" name="sObjectName" type="String" />
+    
+    <!-- Property -->
+    <aura:attribute access="global" type="String" name="iconBgColor" default="green"/>
+    <aura:attribute access="global" type="String" name="icon" default=""/>
+    <aura:attribute access="global" type="String" name="listTitle"/>
+    <aura:attribute access="global" type="String" name="fieldThisObject"/>
+    <aura:attribute access="global" type="String" name="targetObject"/>
+    <aura:attribute access="global" type="String" name="fieldTargetObject"/>
+    <aura:attribute access="global" type="String" name="conditions"/>
+    <aura:attribute access="global" type="String" name="showFields"/>
+    <aura:attribute access="global" type="String" name="recordOrder"/>
+    <aura:attribute access="global" type="String" name="fieldImage"/>
+    <aura:attribute access="global" type="String" name="maxHeightImage" default="150px"/>
+    <aura:attribute access="global" type="Integer" name="maxShowRecordCount" default="0"/>
+    
+    <!--["Name", "Address__c", "Tel__c"]-->
+    <aura:attribute access="global" type="String[]" name="sFields" default=""/>
+    <aura:attribute access="global" type="String[]" name="asFields" default=""/>
+    <aura:attribute access="global" type="String[]" name="labels2" default=""/>
+    <aura:attribute access="global" type="String[]" name="targetFieldList" default=""/>
+    <aura:attribute access="global" type="String[]" name="thisFieldList" default=""/>
+    <aura:attribute access="global" type="String[]" name="conditionList" default=""/>
+
+    <!--{"Name": "Name", "Address__c": "Address", "Tel__c": "TEL"}-->
+    <aura:attribute access="global" type="Object" name="labelMaps" default=""/>
+    
+    <!--{"Name": "Test Record", "Address__c": "JP Tower, Marunouchi, Chiyoda, Tokyo, Japan", "Tel__c": "000-000-0000"}-->
+    <aura:attribute access="global" type="Object[]" name="raws" default=""/>
+    <aura:attribute access="global" type="Object[]" name="details" default=""/>
+    <aura:attribute access="global" type="Integer" name="allRecordCount" default="0"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+            
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                <div class="{!'slds-media__figure my-icon cicon-' + v.iconBgColor}">
+                    <img src="{!$Resource.RecommendedRelatedListIcon20170130 + '/' + v.icon +'_60.png'}"/>
+                </div>
+                <div class="slds-media__body">
+                    <h2>
+                        <a href="javascript:void(0);" class="slds-card__header-link slds-truncate">
+                            <span class="slds-text-heading--small">{!v.listTitle} ({!v.allRecordCount})</span>
+                        </a>
+                    </h2>
+                </div>
+            </header>
+            <div class="slds-no-flex">
+            </div>
+        </div>
+        <div class="slds-card__body">
+            <div class="slds-card__body--inner">
+                <aura:iteration items="{!v.details}" var="detail">
+                    <div class="slds-tile">
+                        <h3 class="slds-truncate"><a href="javascript:void(0);" onclick="{!c.clickRecord}" data-id="{!detail.id}">{!detail.title}</a></h3>
+                        <div class="slds-tile__detail slds-text-body--small">
+                            <aura:iteration items="{!detail.detail}" var="field">
+                                <dl class="slds-list--horizontal slds-wrap">
+                                    <dt class="slds-item--label slds-text-color--weak slds-truncate">{!field.label}:</dt>
+                                    <dd class="slds-item--detail slds-truncate">{!field.value}</dd>
+                                </dl>
+                            </aura:iteration>
+                            <aura:if isTrue="{!detail.imageBool}">
+                                <img class="myimg" style="{!'max-height: ' + v.maxHeightImage}" src="{!detail.image}" />
+                            </aura:if>
+                        </div>
+                    </div>
+                </aura:iteration>
+            </div>
+            
+        </div>
+        <div class="slds-card__footer"></div>
+    </article>
+
+</aura:component>

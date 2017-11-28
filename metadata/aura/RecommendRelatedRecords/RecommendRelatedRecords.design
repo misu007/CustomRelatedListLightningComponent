@@ -1,0 +1,52 @@
+<design:component label="Custom Recommend List">
+    
+    <design:attribute name="iconBgColor"
+                      label="Icon Background Color"
+                      datasource="green,yellow-green,yellow,orange,blue,pink,navy,red,light-blue,gray"
+                      default="blue"
+                      />
+    <design:attribute name="icon"
+                      label="Icon"
+                      datasource="account,announcement,answer_best,answer_private,answer_public,approval,apps,apps_admin,article,avatar,avatar_loading,calibration,call,call_history,campaign,campaign_members,canvas,case,case_change_status,case_comment,case_email,case_log_a_call,case_transcript,client,coaching,connected_apps,contact,contract,custom,dashboard,default,document,drafts,email,email_IQ,email_chatter,empty,endorsement,environment_hub,event,feed,feedback,file,flow,folder,generic_loading,goals,group_loading,groups,hierarchy,home,household,insights,investment_account,lead,link,log_a_call,marketing_actions,metrics,news,note,opportunity,orders,people,performance,person_account,photo,poll,portal,post,pricebook,process,product,question_best,question_feed,quotes,recent,record,related_list,report,reward,scan_card,skill_entity,social,solution,sossession,task2,task,team_member,thanks,thanks_loading,today,topic,unmatched,user,work_order,work_order_item"
+                      default="custom"
+                      />
+    <design:attribute name="listTitle"
+                      label="Title"
+                      default="Sample List"
+                      />   
+    <design:attribute name="showFields"
+                      label="*q* SELECT        ex) Field1__c, Field2__c, ..."
+                      default="Name, Id, OwnerId"
+                      />   
+    <design:attribute name="targetObject"
+                      label="*q* FROM  ex) Object1__c"
+                      default=""
+                      />   
+    <design:attribute name="fieldTargetObject"
+                      label="*q* WHERE  ex) Field1__c, Field2, ..."
+                      default="OwnerId"
+                      />   
+    <design:attribute name="conditions"
+                      label="*q* ex) =, &lt;, &gt;, &lt;&gt;, ..."
+                      default="OwnerId"
+                      />   
+    <design:attribute name="fieldThisObject"
+                      label="*q* ex) 'value1', FieldOfThisRecord__c, 'value2', ..."
+                      default="OwnerId"
+                      />   
+    <design:attribute name="recordOrder"
+                      label="*q* ORDER BY ex) Field1__c DESC, Field2__c, ..."
+                      default="Name"
+                      />      
+    <design:attribute name="maxShowRecordCount"
+                      label="*q* LIMIT ex) 5"
+                      default=""
+                      />        
+    <design:attribute name="fieldImage"
+                      label="Show field of Image URL"
+                      />   
+    <design:attribute name="maxHeightImage"
+                      label="Max Height of Image"
+                      default="150px"
+                      />       
+</design:component>
